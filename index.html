@@ -752,6 +752,268 @@
                 display: none;
             }
         }
+
+        /* Theme Slider Styles */
+.theme-slider-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    padding: 15px 20px;
+    border: 2px solid rgba(76, 175, 80, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.theme-slider-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.theme-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.theme-slider {
+    position: relative;
+    width: 120px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.theme-slider:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.theme-slider-track {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: linear-gradient(90deg, 
+        rgba(15, 32, 39, 0.8) 0%, 
+        rgba(76, 175, 80, 0.3) 33%, 
+        rgba(139, 195, 74, 0.3) 66%, 
+        rgba(255, 255, 255, 0.8) 100%);
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.theme-slider-thumb {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.theme-slider-thumb:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+.theme-slider-thumb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+/* Theme indicator dots */
+.theme-indicators {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.theme-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.theme-dot.dark {
+    background: linear-gradient(45deg, #0f2027, #203a43);
+}
+
+.theme-dot.green {
+    background: linear-gradient(45deg, #4CAF50, #82b846);
+}
+
+.theme-dot.blue {
+    background: linear-gradient(45deg, #2196F3, #03DAC6);
+}
+
+.theme-dot.purple {
+    background: linear-gradient(45deg, #9C27B0, #E91E63);
+}
+
+.theme-dot.active {
+    transform: scale(1.3);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.theme-dot:hover {
+    transform: scale(1.2);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Theme Variables */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #8BC34A;
+    --accent-color: #CDDC39;
+    --bg-gradient-start: #0f2027;
+    --bg-gradient-mid: #203a43;
+    --bg-gradient-end: #2c5364;
+}
+
+/* Theme Classes */
+body.theme-dark {
+    --primary-color: #4CAF50;
+    --secondary-color: #8BC34A;
+    --accent-color: #CDDC39;
+    --bg-gradient-start: #0f2027;
+    --bg-gradient-mid: #203a43;
+    --bg-gradient-end: #2c5364;
+}
+
+body.theme-blue {
+    --primary-color: #2196F3;
+    --secondary-color: #03DAC6;
+    --accent-color: #00BCD4;
+    --bg-gradient-start: #0c1445;
+    --bg-gradient-mid: #1e3c72;
+    --bg-gradient-end: #2a5298;
+}
+
+body.theme-purple {
+    --primary-color: #9C27B0;
+    --secondary-color: #E91E63;
+    --accent-color: #FF5722;
+    --bg-gradient-start: #2d1b69;
+    --bg-gradient-mid: #11998e;
+    --bg-gradient-end: #38ef7d;
+}
+
+body.theme-green {
+    --primary-color: #4CAF50;
+    --secondary-color: #8BC34A;
+    --accent-color: #CDDC39;
+    --bg-gradient-start: #134e5e;
+    --bg-gradient-mid: #71b280;
+    --bg-gradient-end: #a8e6cf;
+}
+
+/* Apply theme variables to existing elements */
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+}
+
+.profile-image {
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(var(--primary-color), 0.4);
+}
+
+.profile-image::after {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color), var(--primary-color));
+}
+
+h1 {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(var(--primary-color), 0.5);
+}
+
+.contact-link {
+    color: var(--primary-color);
+    border-color: rgba(var(--primary-color), 0.4);
+    background: rgba(var(--primary-color), 0.1);
+}
+
+.contact-link:hover {
+    background: rgba(var(--primary-color), 0.2);
+    box-shadow: 0 10px 25px rgba(var(--primary-color), 0.3);
+    border-color: rgba(var(--primary-color), 0.6);
+}
+
+.cv-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 10px 25px rgba(var(--primary-color), 0.3);
+}
+
+.cv-button:hover {
+    box-shadow: 0 15px 35px rgba(var(--primary-color), 0.4);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .theme-slider-container {
+        top: 10px;
+        right: 10px;
+        padding: 10px 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .theme-label {
+        font-size: 0.8rem;
+    }
+
+    .theme-slider {
+        width: 80px;
+        height: 20px;
+    }
+
+    .theme-slider-thumb {
+        width: 15px;
+        height: 15px;
+    }
+
+    .theme-indicators {
+        gap: 6px;
+    }
+
+    .theme-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
     </style>
 </head>
 <body>
@@ -765,6 +1027,21 @@
 
     <div class="container">
         <div class="header">
+            
+        <div class="theme-slider-container">
+            <span class="theme-label">Theme</span>
+            <div class="theme-slider" id="themeSlider">
+                <div class="theme-slider-track"></div>
+                <div class="theme-slider-thumb" id="themeThumb"></div>
+            </div>
+            <div class="theme-indicators">
+                <div class="theme-dot dark active" data-theme="dark"></div>
+                <div class="theme-dot green" data-theme="green"></div>
+                <div class="theme-dot blue" data-theme="blue"></div>
+                <div class="theme-dot purple" data-theme="purple"></div>
+            </div>
+        </div>
+
             <!-- <div class="profile-image"></div> -->
             <h1>Michelle Wambaya</h1>
             <p class="subtitle">Data Science & Analytics Specialist</p>
@@ -1143,4 +1420,405 @@
 
                 <div class="skill-category">
                     <h4>Tools & Technologies</h>
-                    
+                     
+
+                     <div class="skill-list">
+                        Jupyter Notebook, Google Colab<br>
+                        GitHub, Docker, Apache Airflow<br>
+                        SQLite, PostgreSQL, MongoDB<br>
+                        Tableau, Power BI<br>
+                        VS Code, PyCharm
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Recommendations Section -->
+        <div class="jobs-section">
+            <h2 class="jobs-title">💼 Ideal Role Matches</h2>
+            <div class="jobs-grid">
+                <div class="job-card">
+                    <h4 class="job-title">Data Scientist</h4>
+                    <p class="job-description">
+                        Perfect fit for roles requiring end-to-end data science expertise, from data engineering to machine learning model deployment. Strong track record in healthcare and financial analytics with proven results.
+                    </p>
+                    <p class="job-skills">Key Skills: Python, ML, Statistical Analysis, ETL, Visualization</p>
+                </div>
+
+                <div class="job-card">
+                    <h4 class="job-title">Data Engineer</h4>
+                    <p class="job-description">
+                        Specialized in building robust data pipelines and implementing modern data architectures. Experience with healthcare data processing and Bronze-Silver-Gold layer implementations.
+                    </p>
+                    <p class="job-skills">Key Skills: Python, ETL, Data Architecture, Apache Airflow, SQL</p>
+                </div>
+
+                <div class="job-card">
+                    <h4 class="job-title">Healthcare Data Analyst</h4>
+                    <p class="job-description">
+                        Domain expertise in healthcare analytics with experience analyzing 10,000+ health facilities and pharmaceutical pricing. Strong understanding of healthcare data challenges and solutions.
+                    </p>
+                    <p class="job-skills">Key Skills: Healthcare Analytics, Data Visualization, Statistical Analysis</p>
+                </div>
+
+                <div class="job-card">
+                    <h4 class="job-title">Financial Technology Analyst</h4>
+                    <p class="job-description">
+                        Proven experience through JPMorgan Chase program with financial data visualization and real-time trading dashboard development. Strong software engineering foundation.
+                    </p>
+                    <p class="job-skills">Key Skills: FinTech, React, TypeScript, Financial APIs, Data Visualization</p>
+                </div>
+
+                <div class="job-card">
+                    <h4 class="job-title">Business Intelligence Developer</h4>
+                    <p class="job-description">
+                        Expert in transforming complex datasets into actionable business insights through advanced analytics and interactive dashboard development across multiple industries.
+                    </p>
+                    <p class="job-skills">Key Skills: Tableau, Python, Business Analytics, Dashboard Development</p>
+                </div>
+
+                <div class="job-card">
+                    <h4 class="job-title">Machine Learning Engineer</h4>
+                    <p class="job-description">
+                        Strong foundation in predictive modeling with 82% accuracy achievements. Experience in time series forecasting, feature engineering, and model optimization across various domains.
+                    </p>
+                    <p class="job-skills">Key Skills: Python, Scikit-learn, Model Deployment, Feature Engineering</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Projects Section -->
+        <div class="skills-section">
+            <h2 class="skills-title">🚀 Explore More Projects</h2>
+            <div style="text-align: center; padding: 20px;">
+                <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; line-height: 1.6;">
+                    Want to see more of my work? Check out my complete GitHub repository with additional projects, code samples, and contributions to open-source initiatives.
+                </p>
+                <a href="https://github.com/MichelleWambaya" class="cta-button" target="_blank" style="display: inline-flex; align-items: center; gap: 10px;">
+                    <span>🔗</span>
+                    View All GitHub Projects
+                </a>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Let's Build Something Amazing Together</h2>
+            <p class="cta-text">
+                Ready to transform your data challenges into strategic opportunities? I'm passionate about creating data-driven solutions that deliver real business value. Let's discuss how my expertise can contribute to your team's success.
+            </p>
+            <a href="mailto:michellewambaya@gmail.com" class="cta-button">
+                Get In Touch 📧
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function downloadCV() {
+            // Replace with actual CV download link
+            window.open('https://drive.google.com/file/d/your-cv-link', '_blank');
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Add scroll animation to project cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to project cards
+            document.querySelectorAll('.project-card, .job-card, .skill-category').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Add typing effect to the quote
+            const quote = document.querySelector('.quote');
+            const originalText = quote.textContent;
+            quote.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < originalText.length) {
+                    quote.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Add particle effect on mouse move
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() < 0.1) { // Only create particles occasionally
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(76, 175, 80, 0.6);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1000;
+                    left: ${e.clientX}px;
+                    top: ${e.clientY}px;
+                    animation: particle-fade 2s ease-out forwards;
+                `;
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 2000);
+            }
+        });
+
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particle-fade {
+                0% {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) translateY(-20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    <script>
+    // Theme Slider JavaScript
+    class ThemeSlider {
+        constructor() {
+            this.themes = ['dark', 'green', 'blue', 'purple'];
+            this.currentTheme = 0;
+            this.slider = document.getElementById('themeSlider');
+            this.thumb = document.getElementById('themeThumb');
+            this.dots = document.querySelectorAll('.theme-dot');
+            this.isDragging = false;
+            
+            this.init();
+        }
+        
+        init() {
+            // Load saved theme or default to first theme
+            const savedTheme = localStorage.getItem('selectedTheme') || this.themes[0];
+            this.currentTheme = this.themes.indexOf(savedTheme);
+            this.applyTheme(this.currentTheme);
+            
+            // Event listeners
+            this.slider.addEventListener('mousedown', this.startDrag.bind(this));
+            this.slider.addEventListener('click', this.handleClick.bind(this));
+            document.addEventListener('mousemove', this.drag.bind(this));
+            document.addEventListener('mouseup', this.endDrag.bind(this));
+            
+            // Touch events for mobile
+            this.slider.addEventListener('touchstart', this.startDrag.bind(this));
+            document.addEventListener('touchmove', this.drag.bind(this));
+            document.addEventListener('touchend', this.endDrag.bind(this));
+            
+            // Dot click events
+            this.dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    this.currentTheme = index;
+                    this.applyTheme(this.currentTheme);
+                });
+            });
+            
+            // Keyboard navigation
+            this.slider.addEventListener('keydown', this.handleKeyboard.bind(this));
+            this.slider.setAttribute('tabindex', '0');
+        }
+        
+        startDrag(e) {
+            this.isDragging = true;
+            this.slider.style.cursor = 'grabbing';
+            e.preventDefault();
+        }
+        
+        drag(e) {
+            if (!this.isDragging) return;
+            
+            const rect = this.slider.getBoundingClientRect();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const x = clientX - rect.left;
+            const percentage = Math.max(0, Math.min(1, x / rect.width));
+            
+            this.updateThumbPosition(percentage);
+            
+            // Determine theme based on position
+            const themeIndex = Math.round(percentage * (this.themes.length - 1));
+            if (themeIndex !== this.currentTheme) {
+                this.currentTheme = themeIndex;
+                this.updateDots();
+                this.applyThemeColors();
+            }
+        }
+        
+        endDrag() {
+            if (!this.isDragging) return;
+            
+            this.isDragging = false;
+            this.slider.style.cursor = 'pointer';
+            
+            // Snap to nearest theme position
+            this.applyTheme(this.currentTheme);
+        }
+        
+        handleClick(e) {
+            if (this.isDragging) return;
+            
+            const rect = this.slider.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percentage = x / rect.width;
+            const themeIndex = Math.round(percentage * (this.themes.length - 1));
+            
+            this.currentTheme = themeIndex;
+            this.applyTheme(this.currentTheme);
+        }
+        
+        handleKeyboard(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    this.currentTheme = Math.max(0, this.currentTheme - 1);
+                    this.applyTheme(this.currentTheme);
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    this.currentTheme = Math.min(this.themes.length - 1, this.currentTheme + 1);
+                    this.applyTheme(this.currentTheme);
+                    e.preventDefault();
+                    break;
+            }
+        }
+        
+        applyTheme(index) {
+            this.currentTheme = index;
+            const theme = this.themes[index];
+            
+            // Apply theme class to body
+            document.body.className = `theme-${theme}`;
+            
+            // Update visual elements
+            this.updateThumbPosition(index / (this.themes.length - 1));
+            this.updateDots();
+            this.applyThemeColors();
+            
+            // Save theme preference
+            localStorage.setItem('selectedTheme', theme);
+            
+            // Dispatch custom event for other components
+            document.dispatchEvent(new CustomEvent('themeChanged', { 
+                detail: { theme: theme, index: index } 
+            }));
+        }
+        
+        updateThumbPosition(percentage) {
+            const maxPosition = this.slider.offsetWidth - this.thumb.offsetWidth - 6;
+            const position = percentage * maxPosition + 3;
+            this.thumb.style.left = `${position}px`;
+        }
+        
+        updateDots() {
+            this.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === this.currentTheme);
+            });
+        }
+        
+        applyThemeColors() {
+            const theme = this.themes[this.currentTheme];
+            const container = document.querySelector('.theme-slider-container');
+            
+            // Update container border color based on current theme
+            const themeColors = {
+                dark: '76, 175, 80',
+                green: '76, 175, 80',
+                blue: '33, 150, 243',
+                purple: '156, 39, 176'
+            };
+            
+            const color = themeColors[theme];
+            container.style.borderColor = `rgba(${color}, 0.3)`;
+            
+            // Update thumb gradient
+            const thumbGradients = {
+                dark: 'linear-gradient(45deg, #4CAF50, #8BC34A)',
+                green: 'linear-gradient(45deg, #4CAF50, #8BC34A)',
+                blue: 'linear-gradient(45deg, #2196F3, #03DAC6)',
+                purple: 'linear-gradient(45deg, #9C27B0, #E91E63)'
+            };
+            
+            this.thumb.style.background = thumbGradients[theme];
+            this.thumb.style.boxShadow = `0 4px 12px rgba(${color}, 0.4)`;
+        }
+        
+        // Public methods
+        setTheme(themeName) {
+            const index = this.themes.indexOf(themeName);
+            if (index !== -1) {
+                this.applyTheme(index);
+            }
+        }
+        
+        getCurrentTheme() {
+            return this.themes[this.currentTheme];
+        }
+        
+        nextTheme() {
+            this.currentTheme = (this.currentTheme + 1) % this.themes.length;
+            this.applyTheme(this.currentTheme);
+        }
+        
+        previousTheme() {
+            this.currentTheme = this.currentTheme === 0 ? this.themes.length - 1 : this.currentTheme - 1;
+            this.applyTheme(this.currentTheme);
+        }
+    }
+
+    // Initialize theme slider when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        window.themeSlider = new ThemeSlider();
+    });
+
+    // Optional: Add smooth theme transition
+    document.addEventListener('themeChanged', (e) => {
+        console.log(`Theme changed to: ${e.detail.theme}`);
+        
+        // Add a subtle transition effect
+        document.body.style.transition = 'all 0.5s ease';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 500);
+    });
+    </script>
+</body>
+</html>
