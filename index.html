@@ -345,12 +345,12 @@
             overflow: hidden;
         }
 
-        .video-placeholder::before {
+        /* .video-placeholder::before {
             content: '🎥';
             font-size: 4rem;
             opacity: 0.7;
             animation: bounce 2s ease-in-out infinite;
-        }
+        } */
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -398,7 +398,7 @@
             width: 250px;
             height: 250px;
             border-radius: 20px;
-            background: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            background: url('file_00000000f4606230a02bd1816bd83d5f.png') center/cover;
             border: 3px solid rgba(76, 175, 80, 0.4);
             box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
             justify-self: center;
@@ -1067,9 +1067,13 @@ h1 {
         <div class="elevator-pitch">
             <h2>🎯 My Story in 60 Seconds</h2>
             <div class="video-placeholder">
-                <div style="text-align: center; color: rgba(255,255,255,0.7);">
-                    <div style="margin-bottom: 10px;">📹 Elevator Pitch Video</div>
-                    <div style="font-size: 0.9rem;">Upload your video here to showcase your passion for data science!</div>
+                <!-- <div style="text-align: center; color: rgba(255,255,255,0.7);">
+                    <div style="margin-bottom: 10px;">📹 Elevator Pitch Video</div> -->
+                    <video controls="video" style="zoom: 50%;">
+                    <source src="20250617_1535_video.mp4" type="video/mp4" >
+                    </video>
+                </div>
+                   
                 </div>
             </div>
             <div class="pitch-text">
